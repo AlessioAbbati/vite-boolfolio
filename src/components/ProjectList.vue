@@ -3,54 +3,60 @@ import axios from 'axios';
 import ProjectCard from './ProjectCard.vue';
 
 export default {
-    components: {ProjectCard},
-    data() {
-        return {
-          arrProjects: [],
-          currentPage: 1,
-          nPages: 0,
-        }
-    },
-    methods: {
+  components: { ProjectCard },
+  data() {
+    return {
+      arrProjects: [],
+      currentPage: 1,
+      nPages: 0,
+    }
+  },
+  methods: {
     changePage(page) {
-			this.currentPage = page;
-			this.getProjects();
-		},
+      this.currentPage = page;
+      this.getProjects();
+    },
     nextPage(page) {
-			this.currentPage ++;
-			this.getProjects();
-		},
+      this.currentPage++;
+      if (this.currentPage > this.totalPages) {
+        this.currentPage = this.totalPages; // Imposta currentPage all'ultima pagina disponibile
+      }
+      this.getProjects();
+    },
     prevPage(page) {
-			this.currentPage --;
-			this.getProjects();
-		},
-		getProjects() {
-			axios
-				.get('http://localhost:8000/api/projects', {
-					params: {
-						page: this.currentPage,
-					},
-				})
-				.then(response => {
-					this.arrProjects = response.data.data;
-					this.nPages = response.data.last_page;
-				});
-		},
+      this.currentPage--;
+      if (this.currentPage < 1) {
+        this.currentPage = 1; // Imposta currentPage alla prima pagina
+      }
+      this.getProjects();
+    },
+    getProjects() {
+      axios
+        .get('http://localhost:8000/api/projects', {
+          params: {
+            page: this.currentPage,
+          },
+        })
+        .then(response => {
+          this.arrProjects = response.data.data;
+          this.nPages = response.data.last_page;
+        });
+    },
 
-    },
-    created() {
-        // richiesta dati al server
-		axios
-			.get('http://localhost:8000/api/projects', {
-				params: {
-					page: this.currentPage,
-				},
-			})
-			.then(response => {
-				this.arrProjects = response.data.data;
-				this.nPages = response.data.last_page;
-			});
-    },
+  },
+  created() {
+    // richiesta dati al server
+    axios
+      .get('http://localhost:8000/api/projects', {
+        params: {
+          page: this.currentPage,
+        },
+      })
+      .then(response => {
+        this.arrProjects = response.data.data;
+        this.nPages = response.data.last_page;
+      });
+  },
 
 };
 </script>
