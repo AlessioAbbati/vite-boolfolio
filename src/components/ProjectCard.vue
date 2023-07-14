@@ -55,7 +55,7 @@ export default {
 
 <template>
     <div v-for="project in arrProjects" :key="project.id" class="card" style="width: 18rem;">
-        <!-- <img src="..." class="card-img-top" alt="..."> -->
+        <img :src="project.image" class="card-img-top" :alt="project.id">
         <div class="card-body">
             <h5 class="card-title">{{ project.title }}</h5>
             <p class="card-text">{{ project.description }}</p>
