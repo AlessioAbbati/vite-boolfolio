@@ -40,6 +40,6 @@ export default {
     </div>
 </template>
 
-<style lang="sass" scoped>
+<style lang="scss" scoped>
 
 </style>
