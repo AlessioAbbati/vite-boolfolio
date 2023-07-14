@@ -16,7 +16,7 @@ export default {
             required: true
         },
         id: {
-            type:String,
+            type: Number,
             required: true
         }
   }
@@ -25,7 +25,7 @@ export default {
 
 <template>
     <div class="card" style="width: 18rem;">
-        <img :src="image" class="card-img-top" :alt="id">
+        <img :src="'http://localhost:8000/storage/' + image" class="card-img-top" :alt="id">
         <div class="card-body">
             <h5 class="card-title">{{ title }}</h5>
             <p class="card-text">{{ description }}</p>

@@ -15,7 +15,6 @@ export default {
 <template>
   <h1>boolpress</h1>
   <project-list />
-  <project-card />
 </template>
 
 <style lang="scss">
