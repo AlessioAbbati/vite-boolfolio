@@ -9,12 +9,19 @@ export default {
           arrProjects: [],
           currentPage: 1,
           nPages: 0,
-          activePage: 1
         }
     },
     methods: {
-        changePage(page) {
+    changePage(page) {
 			this.currentPage = page;
+			this.getProjects();
+		},
+    nextPage(page) {
+			this.currentPage ++;
+			this.getProjects();
+		},
+    prevPage(page) {
+			this.currentPage --;
 			this.getProjects();
 		},
 		getProjects() {
@@ -64,7 +71,7 @@ export default {
   <nav>
     <ul class="pagination">
       <li class="page-item">
-        <a class="page-link" href="#">Previous</a>
+        <a class="page-link" href="#" @click="prevPage(page)">Previous</a>
       </li>
 
       <li v-for="page in nPages" :key="page" class="page-item cursor-pointer" :class="{ active: page == activePage }">
@@ -72,7 +79,7 @@ export default {
       </li>
 
       <li class="page-item">
-        <a class="page-link" href="#">Next</a>
+        <a class="page-link" href="#" @click="nextPage(page)">Next</a>
       </li>
     </ul>
   </nav>
