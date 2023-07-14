@@ -34,7 +34,7 @@ export default {
         <div class="card-body">
             <h5 class="card-title">{{ project.title }}</h5>
             <p class="card-text">{{ project.description }}</p>
-            <div>{{ project.technologies[0].name }}</div>
+            <div v-for="technology in project.technologies" :key="technology.name">{{ technology.name }}</div>
             <div>{{ project.type.name }}</div>
         </div>
     </div>
