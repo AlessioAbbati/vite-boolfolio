@@ -1,11 +1,10 @@
 <script>
 import ProjectList from './components/ProjectList.vue'
-import ProjectCard from './components/ProjectCard.vue'
+
 
 export default {
     components: {
         ProjectList,
-        ProjectCard,
     }
 
 }

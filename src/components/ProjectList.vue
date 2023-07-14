@@ -56,10 +56,7 @@ export default {
   <project-card 
     v-for="project in arrProjects" 
     :key="project.id" 
-    :title="project.title" 
-    :description="project.description"
-    :image="project.image" 
-    :id="project.id"
+    :project="project"
   />
 
   <nav>

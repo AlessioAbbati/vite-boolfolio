@@ -3,32 +3,37 @@
 
 export default {
     props: {
-        title: {
-            type: String,
-            required: true
-        },
-        description: {
-            type: String,
-            required: true
-        },
-        image: {
-            type: String,
-            required: true
-        },
-        id: {
-            type: Number,
-            required: true
+        project: {
+            type: Object,
+            required: true,
+        
         }
+        // title: {
+        //     type: String,
+        //     required: true
+        // },
+        // description: {
+        //     type: String,
+        //     required: true
+        // },
+        // image: {
+        //     type: String,
+        //     required: true
+        // },
+        // id: {
+        //     type: Number,
+        //     required: true
+        // }
   }
 };
 </script>
 
 <template>
     <div class="card" style="width: 18rem;">
-        <img :src="'http://localhost:8000/storage/' + image" class="card-img-top" :alt="id">
+        <img :src="'http://localhost:8000/storage/' + project.image" class="card-img-top" :alt="project.id">
         <div class="card-body">
-            <h5 class="card-title">{{ title }}</h5>
-            <p class="card-text">{{ description }}</p>
+            <h5 class="card-title">{{ project.title }}</h5>
+            <p class="card-text">{{ project.description }}</p>
         </div>
     </div>
 </template>
