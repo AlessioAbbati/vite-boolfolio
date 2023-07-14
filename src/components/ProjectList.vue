@@ -48,11 +48,8 @@ export default {
   <ul>
     <li v-for="project in arrProjects" :key="project.id"><a href="">{{ project.title }}</a></li>
   </ul>
-  <ul>
-    <li v-for="project in arrProjects" :key="project.id"><a href="">{{ project.link_github }}</a></li>
-  </ul>
 
-  <nav>
+<nav>
   <ul class="pagination">
     <li class="page-item">
       <a class="page-link" href="#">Previous</a>
