@@ -1,10 +1,15 @@
 <script>
 import axios from 'axios';
+import ProjectCard from './ProjectCard.vue';
 
 export default {
+    components: {ProjectCard},
     data() {
         return {
-            arrProjects: [],
+          arrProjects: [],
+          currentPage: 1,
+          nPages: 0,
+          activePage: 1
         }
     },
     methods: {
@@ -48,23 +53,30 @@ export default {
   <ul>
     <li v-for="project in arrProjects" :key="project.id"><a href="">{{ project.title }}</a></li>
   </ul>
+  <project-card 
+    v-for="project in arrProjects" 
+    :key="project.id" 
+    :title="project.title" 
+    :description="project.description"
+    :image="project.image" 
+    :id="project.id"
+  />
 
-<nav>
-  <ul class="pagination">
-    <li class="page-item">
-      <a class="page-link" href="#">Previous</a>
-    </li>
+  <nav>
+    <ul class="pagination">
+      <li class="page-item">
+        <a class="page-link" href="#">Previous</a>
+      </li>
 
-    <li v-for="page in nPages" :key="page" class="page-item cursor-pointer" :class="{active: page == activePage}">
+      <li v-for="page in nPages" :key="page" class="page-item cursor-pointer" :class="{ active: page == activePage }">
         <a class="page-link" href="#" @click="changePage(page)">{{ page }}</a>
-    </li>
-    
-    <li class="page-item">
-      <a class="page-link" href="#">Next</a>
-    </li>
-  </ul>
-</nav>
-  
+      </li>
+
+      <li class="page-item">
+        <a class="page-link" href="#">Next</a>
+      </li>
+    </ul>
+  </nav>
 </template>
 
 <style scoped lang="scss">
