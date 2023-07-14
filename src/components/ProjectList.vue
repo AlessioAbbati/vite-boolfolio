@@ -53,11 +53,13 @@ export default {
   <ul>
     <li v-for="project in arrProjects" :key="project.id"><a href="">{{ project.title }}</a></li>
   </ul>
-  <project-card 
+  <div class="row">
+    <project-card 
     v-for="project in arrProjects" 
     :key="project.id" 
     :project="project"
   />
+  </div>
 
   <nav>
     <ul class="pagination">

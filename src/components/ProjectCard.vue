@@ -41,5 +41,7 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-
+.card {
+    border: 1px solid red;
+}
 </style>
