@@ -42,6 +42,7 @@ export default {
             <p class="card-text">{{ project.description }}</p>
             <div v-for="technology in project.technologies" :key="technology.name">{{ technology.name }}</div>
             <div>{{ project.type.name }}</div>
+            <button></button>
         </div>
     </div>
 </template>
