@@ -62,7 +62,6 @@ export default {
 </script>
 
 <template>
-  <h2>i nostri progetti</h2>
   <ul>
     <li v-for="project in arrProjects" :key="project.id"><a href="">{{ project.title }}</a></li>
   </ul>
