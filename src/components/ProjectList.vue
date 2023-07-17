@@ -16,20 +16,12 @@ export default {
     //   this.currentPage = page;
     //   this.getProjects();
     // },
-    // nextPage(page) {
-    //   this.currentPage++;
-    //   if (this.currentPage > this.totalPages) {
-    //     this.currentPage = this.totalPages; // Imposta currentPage all'ultima pagina disponibile
-    //   }
-    //   this.getProjects();
-    // },
-    // prevPage(page) {
-    //   this.currentPage--;
-    //   if (this.currentPage < 1) {
-    //     this.currentPage = 1; // Imposta currentPage alla prima pagina
-    //   }
-    //   this.getProjects();
-    // },
+    nextPage() {
+      this.currentPage != 1 ? this.currentPage-- : null;
+    },
+    prevPage() {
+      this.currentPage != this.nPages ? this.currentPage-- : null;
+    },
     getProjects() {
       axios
         .get('http://localhost:8000/api/projects', {
@@ -96,7 +88,7 @@ export default {
           <a class="page-link" href="#" @click="currentPage--">Previous</a>
         </li>
       
-        <li v-for="page in nPages" :key="page" class="page-item cursor-pointer" :class="{ active: page == activePage }">
+        <li v-for="page in nPages" :key="page" class="page-item cursor-pointer" :class="{ active: page }">
           <a class="page-link" href="#" @click="currentPage = page">{{ page }}</a>
         </li>
       
