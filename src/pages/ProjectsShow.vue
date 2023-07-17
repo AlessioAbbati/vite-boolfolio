@@ -1,5 +1,6 @@
 <script>
 import {store } from '../store';
+import axios from 'axios';
 
 export default {
     data() {
@@ -9,7 +10,7 @@ export default {
     },
     created() {
         // fai la richiesta axios
-        axios.get(this.store.baseUrl + 'projects/projects/' + this.$route.params.slug)
+        axios.get(this.store.baseUrl + 'api/projects/' + this.$route.params.slug)
         .then(response => response.data.data)
     }
 
