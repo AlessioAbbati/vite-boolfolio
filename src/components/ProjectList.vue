@@ -1,6 +1,7 @@
 <script>
 import axios from 'axios';
 import ProjectCard from './ProjectCard.vue';
+import {store} from '../store';
 
 export default {
   components: { ProjectCard },
@@ -9,6 +10,7 @@ export default {
       arrProjects: [],
       currentPage: 1,
       nPages: 0,
+      store,
     }
   },
   methods: {
@@ -24,7 +26,7 @@ export default {
     },
     getProjects() {
       axios
-        .get('http://localhost:8000/api/projects', {
+        .get(this.store.baseUrl + 'api/projects', {
           params: {
             page: this.currentPage,
           },
@@ -38,16 +40,16 @@ export default {
   },
   created() {
     // richiesta dati al server
-    axios
-      .get('http://localhost:8000/api/projects', {
-        params: {
-          page: this.currentPage,
-        },
-      })
-      .then(response => {
-        this.arrProjects = response.data.data;
-        this.nPages = response.data.last_page;
-      });
+    // axios
+    //   .get('http://localhost:8000/api/projects', {
+    //     params: {
+    //       page: this.currentPage,
+    //     },
+    //   })
+    //   .then(response => {
+    //     this.arrProjects = response.data.data;
+    //     this.nPages = response.data.last_page;
+    //   });
   },
   watch: {
     currentPage() {
@@ -66,10 +68,10 @@ export default {
   </ul>
   <div class="row">
     <project-card 
-    v-for="project in arrProjects" 
-    :key="project.id" 
-    :project="project"
-  />
+      v-for="project in arrProjects" 
+      :key="project.id" 
+      :project="project"
+    />
   </div>
 
   <nav>
