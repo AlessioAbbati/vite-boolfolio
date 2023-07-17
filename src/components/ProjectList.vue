@@ -19,10 +19,12 @@ export default {
     //   this.getProjects();
     // },
     nextPage() {
-      this.currentPage != 1 ? this.currentPage-- : null;
+      this.currentPage != this.nPages ? this.currentPage++ : null;
+      console.log(this.currentPage);
     },
     prevPage() {
-      this.currentPage != this.nPages ? this.currentPage-- : null;
+      this.currentPage != 1 ? this.currentPage-- : null;
+      console.log(this.currentPage);
     },
     getProjects() {
       axios
@@ -50,6 +52,7 @@ export default {
     //     this.arrProjects = response.data.data;
     //     this.nPages = response.data.last_page;
     //   });
+    this.getProjects();
   },
   watch: {
     currentPage() {
@@ -86,15 +89,15 @@ export default {
         </li> -->
 
         <li class="page-item" :class="{ disabled: currentPage == 1 }">
-          <a class="page-link" href="#" @click="currentPage--">Previous</a>
+          <a class="page-link" href="#" @click="prevPage">Previous</a>
         </li>
       
-        <li v-for="page in nPages" :key="page" class="page-item cursor-pointer" :class="{ active: page }">
+        <li v-for="page in nPages" :key="page" class="page-item cursor-pointer" :class="{ active: page == currentPage}">
           <a class="page-link" href="#" @click="currentPage = page">{{ page }}</a>
         </li>
       
         <li class="page-item" :class="{ disabled: currentPage == nPages }">
-          <a class="page-link" href="#" @click="currentPage++">Next</a>
+          <a class="page-link" href="#" @click="nextPage">Next</a>
         </li>
       </ul>
     </nav>
