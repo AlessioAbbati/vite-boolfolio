@@ -42,7 +42,7 @@ export default {
             <p class="card-text">{{ project.description }}</p>
             <div v-for="technology in project.technologies" :key="technology.name">{{ technology.name }}</div>
             <div>{{ project.type.name }}</div>
-            <router-link :to="{ name: 'projects.show', params: { slug: project.slug } }">view</router-link>
+            <router-link :to="{ name: 'projects.show', params: { slug: project.slug } }" class="btn btn-primary">view</router-link>
         </div>
     </div>
 </template>
