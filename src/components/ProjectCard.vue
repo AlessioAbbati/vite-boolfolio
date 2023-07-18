@@ -48,7 +48,9 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-.card {
-    border: 1px solid red;
+img {
+    height: 150px;
+    object-fit: cover;
+    object-fit: contain;
 }
 </style>
