@@ -31,6 +31,8 @@ export default {
         .get(this.store.baseUrl + 'api/projects', {
           params: {
             page: this.currentPage,
+            // FIXME: in index non esegue il created e non aggiorna la ricerca
+            q: new URLSearchParams(window.location.search).get('q'),
           },
         })
         .then(response => {
