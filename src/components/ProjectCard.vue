@@ -50,7 +50,6 @@ export default {
 <style lang="scss" scoped>
 img {
     height: 150px;
-    object-fit: cover;
     object-fit: contain;
 }
 </style>

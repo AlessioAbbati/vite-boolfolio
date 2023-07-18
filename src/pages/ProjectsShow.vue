@@ -12,7 +12,7 @@ export default {
     created() {
         // fai la richiesta axios
         axios.get(this.store.baseUrl + 'api/projects/' + this.$route.params.slug)
-        .then(response => this.project = response.data)
+        .then(response => this.project = response.data.results)
         console.log(this.project);
     }
     
