@@ -1,11 +1,13 @@
 <script>
-import {store } from '../store';
+import { store } from '../store';
 import axios from 'axios';
+// import { DateTime } from "luxon";
 
 export default {
     data() {
         return {
             store,
+            // luxon: DateTime,
             project: {},
         }
     },
@@ -15,16 +17,17 @@ export default {
         .then(response => this.project = response.data.results)
         console.log(this.project);
     },
-    
+
 
 };
 </script>
 
-<template>
+<template v-if="project">
   <h1>{{ project.title }}</h1>
+  <!-- <span>{{ project.last_update }}</span> -->
   <img :src="this.store.baseUrl + 'storage/' + project.image" class="card-img-top" :alt="project.id">
   <!-- <img :src="this.store.getImageUrl(project.image)" class="card-img-top" :alt="project.id"> -->
-  
+
 </template>
 
 <style scoped lang="scss">
