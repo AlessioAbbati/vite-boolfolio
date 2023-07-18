@@ -33,7 +33,8 @@ export default {
 
 <template v-if="project">
   <h1>{{ project.title }}</h1>
-  <span>Last update: {{ project.last_update }}</span>
+  <span>Last update: {{ project.last_update }}</span> <br>
+  <span> {{ this.luxon.now().toFormat('dd/MM/yyyy') }}</span>
   <img :src="this.store.baseUrl + 'storage/' + project.image" class="card-img-top" :alt="project.id">
   <!-- <img :src="this.store.getImageUrl(project.image)" class="card-img-top" :alt="project.id"> -->
 
