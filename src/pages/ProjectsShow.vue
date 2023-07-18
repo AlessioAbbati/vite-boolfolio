@@ -21,11 +21,12 @@ export default {
 </script>
 
 <template>
-  <h2>show</h2>
-  <h5>{{ project.title }}</h5>
+  <h1>{{ project.title }}</h1>
+  <img :src="this.store.baseUrl + 'storage/' + project.image" class="card-img-top" :alt="project.id">
+  
 </template>
 
-<style>
+<style scoped lang="scss">
 
 </style>
 

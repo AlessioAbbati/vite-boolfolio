@@ -17,7 +17,6 @@ export default {
   <AppNav />
 
   <div class="container">
-    <h1>boolpress</h1>
     <router-view></router-view>
   </div>
 

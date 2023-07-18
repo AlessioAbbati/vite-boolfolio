@@ -8,6 +8,10 @@ export default {
   <footer>sono il footer</footer>
 </template>
 
-<style>
-
+<style scoped lang="scss">
+footer {
+  height: 5rem;
+  background-color: black;
+  color: white;
+}
 </style>
