@@ -11,10 +11,12 @@ export default {
             message: '',
             newsletter: true,
             showSuccess: false,
+            isSending: false,
         }
     },
     methods: {
         sendLead() {
+            this.isSending = true;
             axios.post(this.store.baseUrl + 'api/leads', {
                 name: this.name,
                 email: this.email,
@@ -23,16 +25,22 @@ export default {
 
             })
               .then(response => {
-                console.log('server contattato')
+                this.isSending = false;
 
                 if (response.data.success) {
                     this.showSuccess = true;
+                    this.resetForm()
+                    this.resetForm();
                 }
               });
-            
-
-            
         },
+        resetForm() {
+            this.name = '';
+            this.email = '';
+            this.message = '';
+            this.newsletter = true;
+        },
+
     },
 
 };
@@ -66,7 +74,7 @@ export default {
         <input type="checkbox" class="form-check-input" id="newsletter" v-model="newsletter">
         <label class="form-check-label" for="newsletter">subscribe to newsletter</label>
       </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" class="btn btn-primary" :disabled="isSending">Submit</button>
     </form>
 </template>
 
