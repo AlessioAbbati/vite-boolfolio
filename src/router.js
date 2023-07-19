@@ -4,6 +4,7 @@ import AppProjects from './pages/AppProjects.vue';
 import ProjectsShow from './pages/ProjectsShow.vue';
 import AppAbout from './pages/AppAbout.vue';
 import App404 from './pages/App404.vue'
+import AppContact from './pages/AppContact.vue';
 
 // importa i componenti che definiscono le varie pagine
 
@@ -35,6 +36,11 @@ const router = createRouter({
             path: "/:pathMatch(.*)*",
             name: 'page404',
             component: App404
+        },
+        {
+            path: "/contact",
+            name: 'contact',
+            component: AppContact
         },
     ]
 });
