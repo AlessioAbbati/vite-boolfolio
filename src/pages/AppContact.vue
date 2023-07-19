@@ -12,6 +12,7 @@ export default {
             newsletter: true,
             showSuccess: false,
             isSending: false,
+            hasError: false,
         }
     },
     methods: {
@@ -31,8 +32,11 @@ export default {
                     this.showSuccess = true;
                     this.resetForm()
                     this.resetForm();
+                }else {
+                    this.hasError = true;
+
                 }
-              });
+            });
         },
         resetForm() {
             this.name = '';
@@ -48,6 +52,11 @@ export default {
 
 <template>
   <h1>contact us</h1>
+
+    <div v-if="hasError" class="alert alert-danger alert-dismissible fade show" role="alert">
+      errore nella compilazione!!
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
 
     <div v-if="showSuccess" class="alert alert-success alert-dismissible fade show" role="alert">
       messaggio inviato con successo!!
